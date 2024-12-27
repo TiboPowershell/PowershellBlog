@@ -63,7 +63,7 @@ author:
   bio    : "Sharing some usefull scripts."
   links:
     - label: "Linkedin"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -73,7 +73,7 @@ author:
 footer:
   links:
     - label: "Linkedin"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
