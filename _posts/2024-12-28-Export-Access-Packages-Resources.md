@@ -10,6 +10,6 @@ Unfortunately, there isn't an out-of-the-box solution for this query. In the fir
 
 ## Result
 We want to have something like this: 
-
+<img src="/assets/images/excel.png" alt="Example Result" />
 
 
