@@ -28,6 +28,7 @@ To run this script, we will need to download several PowerShell modules and we a
 ### Powershell Modules
 - Microsoft.Graph.Beta: `Install-Module Microsoft.Graph.Beta -Repository PSGallery -Force`
 - ImportExcel: `Install-Module -Name ImportExcel -RequiredVersion 7.8.4`
+  
 ### App Registration
 You will need to create a new app registration with the following **Application** permissions:
 - EntitlementManagement.Read.All
