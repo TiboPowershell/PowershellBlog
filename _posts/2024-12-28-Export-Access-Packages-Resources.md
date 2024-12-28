@@ -1,6 +1,7 @@
 ---
 title: "Export Access Package Resource Groups"
 date: 2024-12-28
+classes: wide
 categories:
   - Access Packages
 ---
@@ -21,3 +22,14 @@ You might be thinking, "This information can't be too hard to retrieve, right?" 
 1. **Indirect Group Addition:** Groups are not directly added to Access Packages. Instead, they are added to the Catalog. Within the Access Package, a correlation is made between the Access Package and the resource groups in the Catalog. This leads to another potential issue: if a group's display name is changed after being added to an Access Package, the Access Package will still show the old name. Consequently, when retrieving the group via PowerShell, it will also display the old name. A workaround for this is to go to the corresponding catalog and refresh all groups from the origin, a feature currently in preview. Another workaround (this is the one we will be using) is to create a Dictionary of all Groups (id, Displayname) and use this to get the correct Display Name by using the OriginID and getting the value from our Dictionary.
 1. **Active Assignment Requirement:** There is a command that can easily retrieve groups given the Access Package ID. However, this only works when there is an active assignment for the Access Package. This means that any Access Packages that are not currently assigned (perhaps they are new or old) will not appear in the report. The command I’m referring to is: `Get-MgBetaEntitlementManagementAccessPackageAssignment`
 
+## Prerequisites
+To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph
+
+### Powershell Modules
+- Microsoft.Graph.Beta: `Install-Module Microsoft.Graph.Beta -Repository PSGallery -Force`
+- ImportExcel: `Install-Module -Name ImportExcel -RequiredVersion 7.8.4`
+### App Registration
+You will need to create a new app registration with the following **Application** permissions:
+- EntitlementManagement.Read.All
+- Group.Read.All
+- 
