@@ -33,5 +33,6 @@ To run this script, we will need to download several PowerShell modules and we a
 You will need to create a new app registration with the following **Application** permissions:
 - EntitlementManagement.Read.All
 - Group.Read.All
+
 **Important:** Don't forget to grant admin consent!
 {: .notice--info}
