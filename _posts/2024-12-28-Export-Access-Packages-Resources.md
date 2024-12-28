@@ -10,8 +10,7 @@ Access Packages are very useful but currently lack robust reporting options. Ima
 Unfortunately, there isn't an out-of-the-box solution for this query. In the first part of this series, we will write a script that exports all Access Packages across all Catalogs and shows their corresponding groups. We will then export this data to Excel, allowing us to use the filter option for easier analysis.
 
 ## Script
-If you don't want to read through this, feel free to just use the [script](https://github.com/TiboPowershell/PowershellScripts/blob/main/AccessPackageReporting/ExportAccessPackageResources.ps1) directly.
-
+If you don't want to read through this, feel free to download the [script](https://github.com/TiboPowershell/PowershellScripts/blob/main/AccessPackageReporting/ExportAccessPackageResources.ps1) directly.
 
 ## Result
 We want to have something like this allowing us to filter on GroupDisplayname: 
