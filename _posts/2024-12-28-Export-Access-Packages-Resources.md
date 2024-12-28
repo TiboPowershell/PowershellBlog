@@ -10,6 +10,7 @@ Unfortunately, there isn't an out-of-the-box solution for this query. In the fir
 
 ## Result
 We want to have something like this allowing us to filter on GroupDisplayname: 
-![Sample Report](/assets/images/excel.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
+
 
 
