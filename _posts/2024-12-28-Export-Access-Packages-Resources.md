@@ -10,6 +10,6 @@ Unfortunately, there isn't an out-of-the-box solution for this query. In the fir
 
 ## Result
 We want to have something like this allowing us to filter on GroupDisplayname: 
-<img src="/assets/images/excel.png" alt="Example Result" />
+![Sample Report](/assets/excel.png)
 
 
