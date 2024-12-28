@@ -13,7 +13,7 @@ Unfortunately, there isn't an out-of-the-box solution for this query. In the fir
 If you don't want to read through this, feel free to download the [script](https://github.com/TiboPowershell/PowershellScripts/blob/main/AccessPackageReporting/ExportAccessPackageResources.ps1) directly.
 
 ## Result
-We want to have something like this allowing us to filter on GroupDisplayname: 
+We want to achieve the following, allowing us to filter on GroupDisplayname: 
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
 
