@@ -9,6 +9,10 @@ categories:
 Access Packages are very useful but currently lack robust reporting options. Imagine working in a large environment with over 300 Access Packages, and needing to identify which ones are responsible for adding people to a PIM group (PIM_Security_Sentinel_Reader).
 Unfortunately, there isn't an out-of-the-box solution for this query. In the first part of this series, we will write a script that exports all Access Packages across all Catalogs and shows their corresponding groups. We will then export this data to Excel, allowing us to use the filter option for easier analysis.
 
+## Script
+If you don't want to read through this, feel free to just use the [script][jekyll-script] directly.
+[jekyll-script]: https://github.com/TiboPowershell/PowershellScripts/blob/main/AccessPackageReporting/ExportAccessPackageResources.ps1
+
 ## Result
 We want to have something like this allowing us to filter on GroupDisplayname: 
 
