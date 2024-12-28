@@ -12,5 +12,8 @@ Unfortunately, there isn't an out-of-the-box solution for this query. In the fir
 We want to have something like this allowing us to filter on GroupDisplayname: 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
 
+Filtering on GroupDisplayname we can see that PIM_Security_Sentinel_Reader is in the following Access Packages:
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel2.png)
+
 
 
