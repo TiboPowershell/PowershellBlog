@@ -26,7 +26,7 @@ You might be thinking, "This information can't be too hard to retrieve, right?" 
 1. **Active Assignment Requirement:** There is a command that can easily retrieve groups given the Access Package ID. However, this only works when there is an active assignment for the Access Package. This means that any Access Packages that are not currently assigned (perhaps they are new or old) will not appear in the report. The command I’m referring to is: `Get-MgBetaEntitlementManagementAccessPackageAssignment`
 
 ## Prerequisites
-To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph
+To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph.
 
 ### Powershell Modules
 - Microsoft.Graph.Beta: `Install-Module Microsoft.Graph.Beta -Repository PSGallery -Force`
@@ -48,7 +48,7 @@ We will also need to create a client secret or a certificate, which the applicat
 
 ## Let’s start with the script
 ### Connect to Graph
-We will need to fill in our Tenant ID, Client ID and Client Secret. We also define a path for our Excel export
+We will need to fill in our Tenant ID, Client ID and Client Secret. We also define a path for our Excel export.
 ```PowerShell
 $Global:TenantId = "<TenantID>"
 $Global:ClientId = "<ClientID>"
