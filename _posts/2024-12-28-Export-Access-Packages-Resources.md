@@ -86,6 +86,14 @@ You might be wondering, "How does this relate to a group?" Believe me, I asked m
 - **Second ID**: Represents the Scope.
 For our purposes, we will only need the **first ID** to proceed.
 
+Now, where can we use this ID? We can use it to search for the corresponding resource in the `$resources.AccessPackageResourceRoles`. If we request the `OriginId` property for the matching resource, you'll see something like this:
+`Member_144505d1-837a-4a86-8143-2aa775e4cf97`.
+
+Once again, notice the underscore separating two values:
+- The part before the underscore (`Member`) indicates whether the user will be added as a **member** or **owner** of the group.
+- The part after the underscore (`144505d1-837a-4a86-8143-2aa775e4cf97`) is the **ID of the group**.
+We can then use this group ID to search in our dictionary for the correct display name.
+
 ### Putting it all together
 ```PowerShell
 $Global:TenantId = "<TenantID>"
