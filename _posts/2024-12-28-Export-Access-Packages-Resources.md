@@ -141,6 +141,14 @@ function Get-ResourcesFromAccessPackages{
     return $exportList
 }
 ```
+### Export the results
+Now, all that’s left is to call the two functions and export the result. This final step will consolidate all the information into a single output, ready for use.
+```PowerShell
+$groupsDictionary = Get-GroupsDictionary
+$getAllAccessPackagesWithResources = Get-ResourcesFromAccessPackages -GroupDictionary $groupsDictionary
+##export values to Excel or Csv 
+Export-Excel -Path $ExportToExcelPath -InputObject $getAllAccessPackagesWithResources  -WorksheetName "AccessPackageResources" -TableStyle Light1 -TableName "Results"
+```
 
 ## Putting it all together
 ```PowerShell
