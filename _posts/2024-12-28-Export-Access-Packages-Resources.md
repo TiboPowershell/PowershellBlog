@@ -94,6 +94,54 @@ Once again, notice the underscore separating two values:
 - The part after the underscore (`144505d1-837a-4a86-8143-2aa775e4cf97`) is the **ID of the group**.
 We can then use this group ID to search in our dictionary for the correct display name.
 
+So, what do we need to do in this function? Here’s the plan:
+- Loop through all catalogs.
+- Retrieve all resources within each catalog.
+- Loop through each access package within the catalog.
+- Match the **Role ID** with the **AccessPackageResourceRoles ID**.
+- Use the group ID to retrieve the corresponding group display name from the dictionary.
+- Create an array of custom objects that contains all the necessary information.
+
+```PowerShell
+function Get-ResourcesFromAccessPackages{
+    param (
+        [hashtable]$GroupDictionary
+    )
+
+    $accessPackageCatalogs = Get-MgBetaEntitlementManagementAccessPackageCatalog -All
+    $exportList = @()
+    $totalCatalogs = $accessPackageCatalogs.Count
+    foreach ($catalog in $accessPackageCatalogs) {
+        Write-Host "[$($accessPackageCatalogs.IndexOf($catalog) + 1)/$($totalCatalogs)][Catalog: $($catalog.DisplayName)]"
+
+        ##get resource from catalog
+        $resources = Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource -AccessPackageCatalogId $catalog.Id -ExpandProperty *
+        ## get all access packages within this resource
+        $accessPackages = Get-MgBetaEntitlementManagementAccessPackage -CatalogId $catalog.Id -ExpandProperty AccessPackageResourceRoleScopes
+
+        $totalAccessPackagesInCatalog = $accessPackages.count
+        foreach($accessPackage in $accessPackages){
+            Write-Host "`t[$($accessPackages.IndexOf($accessPackage) + 1)/$($totalAccessPackagesInCatalog)][Access Package: $($accessPackage.DisplayName)]"
+            $roleIDs = $accessPackage.AccessPackageResourceRoleScopes.Id | ForEach-Object {($_ -split '_')[0]} 
+            foreach($roleID in $roleIDs){
+                ##match the roleIDs with $resources.AccessPackageResourceRoles.ID to get the origin ID (we split it this with underscore since this value is prefixed with Member or Owner)
+                $matchedRole = (($resources.AccessPackageResourceRoles | Where-Object {$_.id -eq $roleID}).OriginId -split '_')[1]
+                ##match this with our GroupDictionary (to make sure we get the correct name)
+                $exportList += [PSCustomObject][Ordered]@{
+                    Catalog = $catalog.DisplayName
+                    CatalogID = $catalog.id
+                    AccessPackage = $accessPackage.DisplayName
+                    AccessPackageID = $accessPackage.Id
+                    GroupDisplayname = $GroupDictionary[$matchedRole]
+                    GroupID  = $matchedRole
+                }
+            }
+        }
+    }
+    return $exportList
+}
+```
+
 ## Putting it all together
 ```PowerShell
 $Global:TenantId = "<TenantID>"
