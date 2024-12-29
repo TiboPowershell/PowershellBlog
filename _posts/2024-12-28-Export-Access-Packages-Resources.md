@@ -64,7 +64,7 @@ Connect-MgGraph -TenantId $tenantId -ClientSecretCredential $ClientSecretCredent
 
 ### Build a dictionary of groups
 We will start by building a function to create a dictionary of all our groups and their corresponding IDs. Although we can retrieve all group display names in each catalog using the `Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource` command, we will use the `originId` property to match each group with its corresponding display name in our dictionary. This approach ensures that the group display names are accurate and correctly mapped.
-```PowerShell
+```powershell
 function Get-GroupsDictionary {
     $groupDictionary = @{}
     $groups = Get-MgBetaGroup -All -Property Id, DisplayName
@@ -102,7 +102,7 @@ So, what do we need to do in this function? Here’s the plan:
 - Use the group ID to retrieve the corresponding group display name from the dictionary.
 - Create an array of custom objects that contains all the necessary information.
 
-```PowerShell
+```powershell
 function Get-ResourcesFromAccessPackages{
     param (
         [hashtable]$GroupDictionary
@@ -143,7 +143,7 @@ function Get-ResourcesFromAccessPackages{
 ```
 ### Export the results
 Now, all that’s left is to call the two functions and export the result. This final step will consolidate all the information into a single output, ready for use.
-```PowerShell
+```powershell
 $groupsDictionary = Get-GroupsDictionary
 $getAllAccessPackagesWithResources = Get-ResourcesFromAccessPackages -GroupDictionary $groupsDictionary
 ##export values to Excel or Csv 
@@ -151,7 +151,7 @@ Export-Excel -Path $ExportToExcelPath -InputObject $getAllAccessPackagesWithReso
 ```
 
 ## Putting it all together
-```PowerShell
+```powershell
 $Global:TenantId = "<TenantID>"
 $Global:ClientId = "<ClientID>"
 $Global:clientSecret = "<ClientSecret>"
