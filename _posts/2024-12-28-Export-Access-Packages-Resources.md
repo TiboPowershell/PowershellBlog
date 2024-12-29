@@ -76,6 +76,15 @@ function Get-GroupsDictionary {
     return $groupDictionary
 }
 ```
+### Get the Access Package Resources
+This part can be a bit tricky. To determine which resources (groups) belong to an Access Package, we need to focus on the following:
+`$accessPackage.AccessPackageResourceRoleScopes.Id`
+This value will look something like:
+`99249363-d5d9-4794-bb30-5a346ad98c20_7f9cb442-f7f7-4ae4-9375-690f05ef0b79.`
+You might be wondering, "How does this relate to a group?" Believe me, I asked myself the same question until I noticed the underscore separating two IDs. According to Microsoft documentation, the AccessPackageResourceRoleScopes property refers to both a role within a resource and a scope for that resource.
+- **First ID**: Represents the Role.
+- **Second ID**: Represents the Scope.
+For our purposes, we will only need the **first ID** to proceed.
 
 ### Putting it all together
 ```PowerShell
