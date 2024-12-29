@@ -49,7 +49,7 @@ We will also need to create a client secret or a certificate, which the applicat
 ## Let’s start with the script
 ### Connect to Graph
 We will need to fill in our Tenant ID, Client ID and Client Secret. We also define a path for our Excel export.
-```PowerShell
+```powershell
 $Global:TenantId = "<TenantID>"
 $Global:ClientId = "<ClientID>"
 $Global:clientSecret = "<ClientSecret>"
