@@ -47,4 +47,32 @@ We will also need to create a client secret or a certificate, which the applicat
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/secret.png)
 
 ## Let’s start with the script
-We will start by building a dictionary of all our groups and their corresponding IDs. Although we can retrieve all group display names in each catalog using the `Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource` command, we will use the `originId` property to match each group with its corresponding display name in our dictionary. This approach ensures that the group display names are accurate and correctly mapped.
+### Connect to Graph
+We will need to fill in our Tenant ID, Client ID and Client Secret. We also define a path for our Excel export
+```PowerShell
+$Global:TenantId = "<TenantID>"
+$Global:ClientId = "<ClientID>"
+$Global:clientSecret = "<ClientSecret>"
+$ExportToExcelPath = "<Path/To/Excel/export.xlsx>"
+
+$SecuredPasswordPassword = ConvertTo-SecureString -String $clientSecret -AsPlainText -Force
+$ClientSecretCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $clientId, $SecuredPasswordPassword
+
+#Connect MgGraph
+Connect-MgGraph -TenantId $tenantId -ClientSecretCredential $ClientSecretCredential
+```
+
+### Build a dictionary of groups
+We will start by building a function to create a dictionary of all our groups and their corresponding IDs. Although we can retrieve all group display names in each catalog using the `Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource` command, we will use the `originId` property to match each group with its corresponding display name in our dictionary. This approach ensures that the group display names are accurate and correctly mapped.
+```PowerShell
+function Get-GroupsDictionary {
+    $groupDictionary = @{}
+    $groups = Get-MgBetaGroup -All -Property Id, DisplayName
+    
+    foreach ($group in $groups) {
+        $groupDictionary[$group.Id] = $group.DisplayName
+    }
+
+    return $groupDictionary
+}
+```
