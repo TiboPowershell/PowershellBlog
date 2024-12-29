@@ -17,7 +17,7 @@ We want to achieve the following, allowing us to filter on GroupDisplayname:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
 
-Filtering on GroupDisplayname we can see that PIM_Security_Sentinel_Reader is in the following Access Packages:
+Filtering on GroupDisplayname we can see that PIM_Security_Sentinel_Reader is a resource of the following Access Packages:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel2.png)
 
