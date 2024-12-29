@@ -23,7 +23,7 @@ twitter_username: username
 github_username: username
 minimal_mistakes_skin: contrast
 search: true
-
+enable_copy_code_button: true
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
