@@ -37,10 +37,12 @@ To run this script, we will need to download several PowerShell modules and we a
 You will need to create a new app registration with the following **Application** permissions:
 - EntitlementManagement.Read.All
 - Group.Read.All
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/secret.png)
 
 **Important:** Don't forget to grant admin consent!
 {: .notice--info}
 
 #### Certificates & secrets
 We will also need to create a client secret or a certificate, which the application will use to authenticate itself. After creating the client secret, make sure to note its value, as it will be required later. Along with the client secret, we will also need the Tenant ID and the Client ID (App ID). 
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/permissions.png)
 
