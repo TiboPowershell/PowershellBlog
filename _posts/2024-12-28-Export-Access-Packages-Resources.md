@@ -46,3 +46,5 @@ You will need to create a new app registration with the following **Application*
 We will also need to create a client secret or a certificate, which the application will use to authenticate itself. After creating the client secret, make sure to note its value, as it will be required later. Along with the client secret, we will also need the Tenant ID and the Client ID (App ID). 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/secret.png)
 
+## Let’s start with the script
+We will start by building a dictionary of all our groups and their corresponding IDs. Although we can retrieve all group display names in each catalog using the `Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource` command, we will use the `originId` property to match each group with its corresponding display name in our dictionary. This approach ensures that the group display names are accurate and correctly mapped.
