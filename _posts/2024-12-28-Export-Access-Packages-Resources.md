@@ -115,9 +115,9 @@ function Get-ResourcesFromAccessPackages{
     foreach ($catalog in $accessPackageCatalogs) {
         Write-Host "[$($accessPackageCatalogs.IndexOf($catalog) + 1)/$($totalCatalogs)][Catalog: $($catalog.DisplayName)]"
 
-        ##get resource from catalog
+        ##get all resources from catalog
         $resources = Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource -AccessPackageCatalogId $catalog.Id -ExpandProperty *
-        ## get all access packages within this resource
+        ## get all access packages within this catalog
         $accessPackages = Get-MgBetaEntitlementManagementAccessPackage -CatalogId $catalog.Id -ExpandProperty AccessPackageResourceRoleScopes
 
         $totalAccessPackagesInCatalog = $accessPackages.count
@@ -187,9 +187,9 @@ function Get-ResourcesFromAccessPackages{
     foreach ($catalog in $accessPackageCatalogs) {
         Write-Host "[$($accessPackageCatalogs.IndexOf($catalog) + 1)/$($totalCatalogs)][Catalog: $($catalog.DisplayName)]"
 
-        ##get resource from catalog
+        ##get all resources from catalog
         $resources = Get-MgBetaEntitlementManagementAccessPackageCatalogAccessPackageResource -AccessPackageCatalogId $catalog.Id -ExpandProperty *
-        ## get all access packages within this resource
+        ## get all access packages within this catalog
         $accessPackages = Get-MgBetaEntitlementManagementAccessPackage -CatalogId $catalog.Id -ExpandProperty AccessPackageResourceRoleScopes
 
         $totalAccessPackagesInCatalog = $accessPackages.count
