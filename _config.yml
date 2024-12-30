@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Tibo Hulens"
   avatar : "/assets/images/1582707163099.jpg"
-  bio    : "M365 Engineer"
+  bio    : "M365/Security Engineer"
   links:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
