@@ -1,5 +1,5 @@
 ---
-title: "Export Access Package Resource Groups"
+title: "Export Access Package Group Resources"
 date: 2024-12-28
 classes: wide
 categories:
