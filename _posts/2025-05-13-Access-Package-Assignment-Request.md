@@ -5,7 +5,7 @@ classes: wide
 categories:
   - Access Packages
 ---
-How can you add a user to an access package using PowerShell without bypassing approval? Great question! Today, I attempted this using the Microsoft [documentation](https://learn.microsoft.com/en-us/graph/api/entitlementmanagement-post-accesspackageassignmentrequests?view=graph-rest-beta&tabs=http) but I kept encountering the following error: `No valid policy was found in the request` .This is the code that I was trying:
+How can you add a user to an access package using PowerShell without bypassing approval? Great question! Today, I attempted this using the Microsoft [documentation](https://learn.microsoft.com/en-us/graph/api/entitlementmanagement-post-accesspackageassignmentrequests?view=graph-rest-beta&tabs=http) but I kept encountering the following error: `No valid policy was found in the request`. This is the code that I was trying:
 ```powershell
 $params = @{
 	requestType = "UserAdd"
