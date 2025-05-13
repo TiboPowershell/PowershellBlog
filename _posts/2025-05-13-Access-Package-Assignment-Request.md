@@ -19,4 +19,5 @@ $params = @{
 
 New-MgBetaEntitlementManagementAccessPackageAssignmentRequest -BodyParameter $params
 ```
+I initially thought that `AdminAdd` would always bypass approval, requiring us to use `UserAdd` instead. However, when reviewing my browser's network logs while manually assigning a user to the access package without bypassing approval I noticed that this was done using `requestType = "AdminAdd"`. Creating the request was challenging because simply changing `requestType = "UserAdd"` to `requestType = "AdminAdd"` works, but it bypassed the approval flow. 
 
