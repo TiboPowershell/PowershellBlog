@@ -17,6 +17,6 @@ $params = @{
     justification = "test"
 }
 
-New-MgBetaEntitlementManagementAccessPackageAssignmentRequest -BodyParameter $params -Verbose
+New-MgBetaEntitlementManagementAccessPackageAssignmentRequest -BodyParameter $params
 ```
 
