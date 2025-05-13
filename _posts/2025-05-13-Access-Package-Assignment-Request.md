@@ -14,7 +14,7 @@ $params = @{
 		assignmentPolicyId = "0aba116d-fab3-41a0-2205-c93b2a6ed59c"
 		accessPackageId = "36c81c22-13e5-4a8e-9efb-e1b98d708bd8"
 	}
-    justification = "test"
+    justification = "User needs this Access package"
 }
 
 New-MgBetaEntitlementManagementAccessPackageAssignmentRequest -BodyParameter $params
@@ -27,13 +27,11 @@ We need to add the `IsApprovalRequired` parameter to our `$params` variable:
 $params = @{
     requestType = "AdminAdd"  
     accessPackageAssignment = @{
-        target = @{
-            objectId = "bc78db22-3bbd-4488-1121-35660bfa7989"
-        }
+        targetId = "bc78db22-3bbd-4488-1121-35660bfa7989"
         assignmentPolicyId = "0aba116d-fab3-41a0-2205-c93b2a6ed59c"
         accessPackageId = "36c81c22-13e5-4a8e-9efb-e1b98d708bd8"
     }
-    justification = "Test"
+    justification = "User needs this Access package"
     parameters = @(
         @{
             name = "IsApprovalRequired"
