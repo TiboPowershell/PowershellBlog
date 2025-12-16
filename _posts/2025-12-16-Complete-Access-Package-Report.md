@@ -34,11 +34,13 @@ Example: AP_Definitions
 To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph.
 
 ### Powershell Modules
-- Install-Module Microsoft.Graph.Authentication
-- Install-Module Microsoft.Graph.Users
-- Install-Module Microsoft.Graph.Groups
-- Install-Module Microsoft.Graph.Beta.Identity.Governance
-- Install-Module ImportExcel
+```powershell
+Install-Module Microsoft.Graph.Authentication
+Install-Module Microsoft.Graph.Users
+Install-Module Microsoft.Graph.Groups
+Install-Module Microsoft.Graph.Beta.Identity.Governance
+Install-Module ImportExcel
+```
 
 ### App Registration
 #### Permissions
@@ -59,8 +61,5 @@ You need to use the following parameters:
 
 Example:
 ```powershell
-.\FullAccessPackageReport.ps1 -TenantId '852e75ef-7372-4fe2-85c4-e7b417' -ClientId 'e8336d4e-5889-46bd-89d3-fad22fcd78d' -Thumbprint 'DEB54AB04B5175CD12E093FAA045D2B9B3EA830' -OutputPath 'C:\Scripts\AccessPackagesReporting\Demo'
+.\FullAccessPackageReport.ps1 -TenantId '85e3758f-7172-4f22-8534-e7b417' -ClientId 'e832344e-5889-46bd-89d3-fad22fcd78d' -Thumbprint 'DEB54AB04B517542E093FAA045D2B9B3EA830' -OutputPath 'C:\Scripts\AccessPackagesReporting\Demo'
 ```
-{: #code-example-1}
-
-
