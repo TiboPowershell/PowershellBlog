@@ -12,4 +12,4 @@ I kept running into the same frustrating problem. I needed to see exactly how my
 
 So this was why I decided to build this PowerShell script to be the ultimate Access Package exporter. It doesn’t just skim the surface; it digs into the Graph API to pull the deep configuration details that are usually hidden. It generates a comprehensive Excel report covering everything from detailed resource roles and assignment policies to the really specific stuff like custom extensions and requestor questions (regex and all). It even dumps the current assignments per package.
 
-Basically, if it’s in your Identity Governance settings, this script exports it. Here is how it works.
+Basically, if it’s in your Identity Governance settings, this script probably exports it.
