@@ -24,7 +24,7 @@ Example Role_dependencies
 
 [![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)
 
-Example AP_defenitions
+Example: AP_Definitions
 
 [![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)
 
@@ -34,11 +34,11 @@ Example AP_defenitions
 To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph.
 
 ### Powershell Modules
-- Microsoft.Graph.Authentication
-- Microsoft.Graph.Users
-- Microsoft.Graph.Groups
-- Microsoft.Graph.Beta.Identity.Governance
-- ImportExcel
+- Install-Module Microsoft.Graph.Authentication
+- Install-Module Microsoft.Graph.Users
+- Install-Module Microsoft.Graph.Groups
+- Install-Module Microsoft.Graph.Beta.Identity.Governance
+- Install-Module ImportExcel
 
 ### App Registration
 #### Permissions
@@ -46,6 +46,7 @@ You will need to create a new app registration with the following **Application*
 - EntitlementManagement.Read.All
 - Group.Read.All
 - Directory.Read.All
+  
 **Important:** Don't forget to grant admin consent and a certificate!
 {: .notice--info}
 
@@ -58,7 +59,7 @@ You need to use the following parameters:
 
 Example:
 ```powershell
-.\APReportV4.ps1 -TenantId '852e75ef-7372-4fe2-85c4-e7b417' -ClientId 'e8336d4e-5889-46bd-89d3-fad22fcd78d' -Thumbprint 'DEB54AB04B5175CD12E093FAA045D2B9B3EA830' -OutputPath 'C:\Scripts\AccessPackagesReporting\Demo'
+.\FullAccessPackageReport.ps1 -TenantId '852e75ef-7372-4fe2-85c4-e7b417' -ClientId 'e8336d4e-5889-46bd-89d3-fad22fcd78d' -Thumbprint 'DEB54AB04B5175CD12E093FAA045D2B9B3EA830' -OutputPath 'C:\Scripts\AccessPackagesReporting\Demo'
 ```
 {: #code-example-1}
 
@@ -109,10 +110,10 @@ Full script:
     When $True, provides detailed logging information. Default: $False
 
 .EXAMPLE
-    .\generate-access-package-report-local-v2.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -Thumbprint "your-thumbprint"
+    .\FullAccessPackageReport.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -Thumbprint "your-thumbprint"
 
 .EXAMPLE
-    .\generate-access-package-report-local-v2.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -Thumbprint "your-thumbprint" -OutputPath "C:\Reports" -VerboseOutput $True
+    .\FullAccessPackageReport.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -Thumbprint "your-thumbprint" -OutputPath "C:\Reports" -VerboseOutput $True
 
 .NOTES
     Required Permissions:
