@@ -20,7 +20,7 @@ If you don't want to read through the prerequisites, feel free to download the [
 ## Result
 When you run this script, it will create an Excel file that looks like this. It has a lot of worksheets so I will only show some of them.
 
-Example Role_dependencies
+Example: Role_dependencies
 
 [![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)
 
