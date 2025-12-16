@@ -22,13 +22,13 @@ When you run this script, it will create an Excel file that looks like this. It 
 
 Example Role_dependencies
 
-![alt]({{ site.url }}{{ site.baseurl }}assets/images/fullaccesspackagereport/Screenshot_1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)
 
 Example AP_defenitions
 
-![alt]({{ site.url }}{{ site.baseurl }}assets/images/fullaccesspackagereport/Screenshot_12.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)
 
-![alt]({{ site.url }}{{ site.baseurl }}assets/images/fullaccesspackagereport/Screenshot_13.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_13.png)
 
 ## Prerequisites
 To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph.
