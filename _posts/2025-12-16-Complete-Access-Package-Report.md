@@ -35,11 +35,11 @@ To run this script, we will need to download several PowerShell modules and we a
 
 ### Powershell Modules
 ```powershell
-Install-Module Microsoft.Graph.Authentication
-Install-Module Microsoft.Graph.Users
-Install-Module Microsoft.Graph.Groups
-Install-Module Microsoft.Graph.Beta.Identity.Governance
-Install-Module ImportExcel
+Install-Module Microsoft.Graph.Authentication -Scope CurrentUser
+Install-Module Microsoft.Graph.Users -Scope CurrentUser
+Install-Module Microsoft.Graph.Groups -Scope CurrentUser
+Install-Module Microsoft.Graph.Beta.Identity.Governance -Scope CurrentUser
+Install-Module ImportExcel -Scope CurrentUser
 ```
 
 ### App Registration
