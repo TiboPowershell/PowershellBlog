@@ -47,7 +47,6 @@ Install-Module ImportExcel -Scope CurrentUser
 You will need to create a new app registration with the following **Application** permissions:
 - EntitlementManagement.Read.All
 - Group.Read.All
-- Directory.Read.All
   
 **Important:** Don't forget to grant admin consent and a certificate!
 {: .notice--info}
