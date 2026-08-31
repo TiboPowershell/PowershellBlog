@@ -1,9 +1,21 @@
 ---
-title: "Export Access Package Group Resources"
+title: "Export Entra ID Access Package Group Resources with PowerShell"
+excerpt: "Export every Entra ID Access Package and the groups it hands out to Excel with PowerShell and Microsoft Graph, so you can finally filter on group name."
 date: 2024-12-28
+last_modified_at: 2025-01-24
 classes: wide
 categories:
   - Access Packages
+tags:
+  - PowerShell
+  - Entra ID
+  - Entitlement Management
+  - Microsoft Graph
+  - Reporting
+header:
+  teaser: /assets/images/teasers/export-access-package-resources.png
+redirect_from:
+  - /access packages/Export-Access-Packages-Resources/
 ---
 
 Access Packages are very useful but currently lack robust reporting options. Imagine working in a large environment with over 300 Access Packages, and needing to identify which ones are responsible for adding people to a PIM group (PIM_Security_Sentinel_Reader).
@@ -15,11 +27,11 @@ If you don't want to read through this, feel free to download the [script](https
 ## Result
 We want to achieve the following, allowing us to filter on GroupDisplayname: 
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
+![Excel export of all Entra ID Access Packages with a GroupDisplayname column ready to filter]({{ site.url }}{{ site.baseurl }}/assets/images/excel.png)
 
 Filtering on GroupDisplayname we can see that PIM_Security_Sentinel_Reader is a resource of the following Access Packages:
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/excel2.png)
+![Excel filtered on GroupDisplayname, showing every Access Package that contains the PIM_Security_Sentinel_Reader group]({{ site.url }}{{ site.baseurl }}/assets/images/excel2.png)
 
 You might be thinking, "This information can't be too hard to retrieve, right?" Unfortunately, there are two issues that make this more challenging than it should be.
 1. **Indirect Group Addition:** Groups are not directly added to Access Packages. Instead, they are added to the Catalog. Within the Access Package, a correlation is made between the Access Package and the resource groups in the Catalog. This leads to another potential issue: if a group's display name is changed after being added to an Access Package, the Access Package will still show the old name. Consequently, when retrieving the group via PowerShell, it will also display the old name. A workaround for this is to go to the corresponding catalog and refresh all groups from the origin, a feature currently in preview. Another workaround (this is the one we will be using) is to create a Dictionary of all Groups (id, Displayname) and use this to get the correct Display Name by using the OriginID and getting the value from our Dictionary.
@@ -37,14 +49,14 @@ To run this script, we will need to download several PowerShell modules and we a
 You will need to create a new app registration with the following **Application** permissions:
 - EntitlementManagement.Read.All
 - Group.Read.All
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/permissions.png)
+![Entra ID app registration with the EntitlementManagement.Read.All and Group.Read.All application permissions granted]({{ site.url }}{{ site.baseurl }}/assets/images/permissions.png)
 
 **Important:** Don't forget to grant admin consent!
 {: .notice--info}
 
 #### Certificates & secrets
 We will also need to create a client secret or a certificate, which the application will use to authenticate itself. After creating the client secret, make sure to note its value, as it will be required later. Along with the client secret, we will also need the Tenant ID and the Client ID (App ID). 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/secret.png)
+![Creating a client secret on the Entra ID app registration used to connect to Microsoft Graph]({{ site.url }}{{ site.baseurl }}/assets/images/secret.png)
 
 ## Let’s start with the script
 ### Connect to Graph

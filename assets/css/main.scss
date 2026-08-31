@@ -1,0 +1,306 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+// ===========================================================================
+// PowerShell Blog - custom skin
+//
+// Everything above the @imports is a Sass *variable* override. It has to sit
+// there, because Minimal Mistakes declares its own values with !default and
+// the first declaration wins. Everything below the @imports is plain CSS that
+// overrides the theme's rules.
+//
+// Set `minimal_mistakes_skin: default` in _config.yml - the default skin file
+// is intentionally empty, so the palette below is the whole palette.
+// ===========================================================================
+
+// --- Brand ------------------------------------------------------------------
+$brand-navy: #051b38; // masthead + footer (same navy as the share images)
+$brand-navy-deep: #010e22; // dropdowns
+$brand-console: #0d1b2a; // code block background
+$brand-cyan: #4fc3f7; // accent / hover
+$brand-blue: #0b6fb8; // body links - 5.3:1 on white, passes AA
+
+// --- Typography -------------------------------------------------------------
+// Cascadia Code first: the Windows Terminal / VS Code PowerShell font.
+$monospace: ui-monospace, "Cascadia Code", "Cascadia Mono", "JetBrains Mono",
+  Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
+
+// Code blocks and meta text ship at ~12px, which is painful on a blog whose
+// main content is scripts. Bump to ~14px.
+$type-size-6: 0.875em;
+$type-size-7: 0.8125em;
+
+// --- Core colours -----------------------------------------------------------
+$background-color: #fff;
+$text-color: #1b2733;
+$muted-text-color: #5b6b7c;
+$border-color: #dce4ec;
+$primary-color: $brand-blue;
+$focus-color: $brand-blue;
+
+$link-color: $brand-blue;
+$link-color-hover: mix(#000, $brand-blue, 25%);
+$link-color-visited: $brand-blue; // no purple - these are reference links
+
+$code-background-color: #f1f6fa;
+$code-background-color-dark: #e4edf5;
+$form-background-color: #f1f6fa;
+$footer-background-color: $brand-navy;
+
+$masthead-link-color: #fff;
+$masthead-link-color-hover: $brand-cyan;
+$navicon-link-color-hover: rgba(255, 255, 255, 0.14);
+
+// --- Syntax highlighting (base16), tuned for PowerShell ----------------------
+$base00: $brand-console; // background
+$base01: #16273a;
+$base02: #1e344c; // selection / line highlight
+$base03: #6f879e; // comments
+$base04: #a8bdd0;
+$base05: #e6edf3; // default text
+$base06: #f0f6fc;
+$base07: #ffffff;
+$base08: #ff8a80; // red
+$base09: #ffb86c; // orange - numbers
+$base0a: #ffd866; // yellow - $variables
+$base0b: #a5e075; // green  - "strings"
+$base0c: $brand-cyan; // cyan   - operators
+$base0d: #79b8ff; // blue   - Verb-Noun cmdlets
+$base0e: #d2a8ff; // purple - keywords
+$base0f: #ff7b72;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+// ===========================================================================
+// Component overrides
+// ===========================================================================
+
+// --- Masthead: navy bar with a cyan underline -------------------------------
+.masthead {
+  background-color: $brand-navy;
+  border-bottom: 0;
+  box-shadow: inset 0 -3px 0 0 $brand-cyan;
+}
+
+.greedy-nav {
+  background: transparent;
+
+  a {
+    font-weight: 600;
+  }
+
+  .visible-links a:before {
+    background: $brand-cyan;
+  }
+
+  .hidden-links {
+    background: $brand-navy-deep;
+    border-color: rgba(255, 255, 255, 0.18);
+
+    a {
+      color: #fff;
+      font-weight: 400;
+    }
+
+    li {
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    &::before {
+      border-color: rgba(255, 255, 255, 0.18) transparent;
+    }
+
+    &::after {
+      border-color: $brand-navy-deep transparent;
+    }
+  }
+}
+
+.site-title {
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.site-subtitle {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+// Hamburger has to be light against the navy bar
+.navicon,
+.navicon::before,
+.navicon::after {
+  background: #fff;
+}
+
+.greedy-nav__toggle:hover {
+  .navicon,
+  .navicon:before,
+  .navicon:after {
+    background: $brand-cyan;
+  }
+
+  &.close .navicon {
+    background: transparent;
+  }
+}
+
+// --- Body copy: more air for long-form reading ------------------------------
+.page__content {
+  p,
+  li {
+    line-height: 1.7;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+    line-height: 1.3;
+    color: $brand-navy;
+  }
+
+  h2 {
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.page__title,
+.archive__item-title {
+  color: $brand-navy;
+}
+
+// --- Code -------------------------------------------------------------------
+div.highlighter-rouge,
+figure.highlight {
+  border: 1px solid mix(#fff, $brand-console, 12%);
+  border-radius: 6px;
+  line-height: 1.6;
+
+  > pre,
+  pre.highlight {
+    padding: 1.15em 1.25em;
+    overflow-x: auto;
+  }
+}
+
+// Inline code: readable without shouting
+.page__content code.highlighter-rouge,
+.page__content p > code,
+.page__content li > code,
+.page__content td > code {
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+  color: mix(#000, $brand-blue, 15%);
+  border-radius: 4px;
+}
+
+// --- Tables -----------------------------------------------------------------
+.page__content table {
+  display: table;
+  width: 100%;
+  font-size: $type-size-6;
+
+  th {
+    color: #fff;
+    background-color: $brand-navy;
+    border-color: $brand-navy;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f5f8fb;
+  }
+}
+
+// --- Screenshots: an edge so they don't bleed into the page -----------------
+.page__content p > img,
+.page__content p > a > img {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+}
+
+// --- Post list: cards with a real hover state -------------------------------
+.list__item .archive__item {
+  padding: 1.25em;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: #fff;
+  transition: box-shadow 0.15s ease, transform 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    border-color: mix($brand-cyan, $border-color, 45%);
+    box-shadow: 0 6px 20px rgba(5, 27, 56, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+.archive__item-teaser {
+  border-radius: 6px;
+}
+
+.archive__item-title {
+  margin-top: 0;
+  line-height: 1.25;
+}
+
+// --- Table of contents ------------------------------------------------------
+.toc {
+  border-radius: 8px;
+  overflow: hidden;
+  border-color: $border-color;
+
+  .nav__title {
+    color: #fff;
+    background: $brand-navy;
+    border-radius: 0;
+  }
+
+  .active a {
+    background: $brand-blue;
+  }
+}
+
+// --- Tags and category pills ------------------------------------------------
+.page__taxonomy .page__taxonomy-item {
+  color: $brand-navy;
+  border-color: $border-color;
+  background: #f1f6fa;
+
+  &:hover {
+    color: #fff;
+    background: $brand-blue;
+    border-color: $brand-blue;
+  }
+}
+
+// --- Footer -----------------------------------------------------------------
+.page__footer {
+  margin-top: 3em;
+  color: #93b4ce;
+
+  a {
+    color: #cfe3f2;
+
+    &:hover {
+      color: $brand-cyan;
+    }
+  }
+}
+
+.page__footer-follow .social-icons a {
+  color: #cfe3f2;
+}
+
+// --- Accessibility: make keyboard focus obvious ----------------------------
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid $brand-cyan;
+  outline-offset: 2px;
+}

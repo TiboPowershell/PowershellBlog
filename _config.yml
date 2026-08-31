@@ -1,83 +1,108 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
+# ---------------------------------------------------------------------------
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Powershell Blog
-email: 
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: contrast
-search: true
-enable_copy_code_button: true
-# Build settings
-markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
-# Outputting
-permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+# ---------------------------------------------------------------------------
+locale                   : "en-US"
+title                    : "PowerShell Blog"
+title_separator          : "|"
+subtitle                 : "PowerShell for Microsoft 365 & Entra ID"
+name                     : "Tibo Hulens"
+description              : >-
+  PowerShell scripts and guides for Microsoft 365 and Entra ID admins:
+  Access Packages, Entitlement Management, PIM and Microsoft Graph reporting.
+url                      : "https://tibopowershell.github.io"
+baseurl                  : "/PowershellBlog"
+repository               : "TiboPowershell/PowershellBlog"
+masthead_title           : "PowerShell Blog"
+
+# Default share/preview image used by Google, LinkedIn, Teams, Slack, X
+og_image                 : "/assets/images/og-default.png"
+og_image_alt             : "PowerShell Blog - PowerShell for Microsoft 365 and Entra ID"
+# Default teaser thumbnail for posts that don't set their own
+teaser                   : "/assets/images/og-default.png"
+
+# Drives the schema.org Person block + sameAs links (Google entity graph)
+social:
+  type                   : Person
+  name                   : "Tibo Hulens"
+  links:
+    - "https://www.linkedin.com/in/tibo-hulens-2a907659/"
+    - "https://github.com/TiboPowershell"
+
+# Site verification (the googlee8b78a8fcf949ad3.html file also works; this is a
+# second, more robust method that survives file moves)
+# google_site_verification : "PASTE_META_TAG_CONTENT_HERE"
+# bing_site_verification   :
+
+# Analytics - fill in to see which posts actually get traffic
+# analytics:
+#   provider               : "google-gtag"
+#   google:
+#     tracking_id          : "G-XXXXXXXXXX"
+#     anonymize_ip         : true
+
+# ---------------------------------------------------------------------------
+# Theme
+# ---------------------------------------------------------------------------
+remote_theme             : mmistakes/minimal-mistakes
+minimal_mistakes_skin    : default   # palette lives in assets/css/main.scss
+search                   : true
+search_full_content      : true
+enable_copy_code_button  : true
+breadcrumbs              : true
+words_per_minute         : 200
+
+author:
+  name                   : "Tibo Hulens"
+  avatar                 : "/assets/images/1741171555873.jpg"
+  bio                    : "M365 / Security Engineer. I write PowerShell so I don't have to click through the Entra portal 300 times."
+  location               : "Belgium"
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/TiboPowershell"
+
+footer:
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/TiboPowershell"
+    - label: "RSS"
+      icon: "fas fa-fw fa-rss-square"
+      url: "/PowershellBlog/feed.xml"
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+markdown                 : kramdown
+kramdown:
+  input                  : GFM
+  auto_ids               : true
+  syntax_highlighter     : rouge
+
+# Clean, short post URLs. Old /:categories/:title/ URLs are kept alive with
+# redirect_from entries in each post's front matter.
+permalink                : /:title/
+paginate                 : 10
+paginate_path            : /page:num/
+timezone                 : Europe/Brussels
 
 include:
   - _pages
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-# Plugins (previously gems:)
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
+  - jekyll-redirect-from
   - jemoji
   - jekyll-include-cache
-
-author:
-  name   : "Tibo Hulens"
-  avatar : "/assets/images/1741171555873.jpg"
-  bio    : "M365/Security Engineer"
-  links:
-    - label: "Linkedin"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/TiboPowershell"
-
-
-footer:
-  links:
-    - label: "Linkedin"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/tibo-hulens-2a907659/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/TiboPowershell"
 
 defaults:
   # _posts
@@ -87,10 +112,14 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: false
+      read_time: true
+      show_date: true
       comments: true
       share: true
-      related: false
+      related: true
+      toc: true
+      toc_label: "On this page"
+      toc_sticky: true
   # _pages
   - scope:
       path: "_pages"

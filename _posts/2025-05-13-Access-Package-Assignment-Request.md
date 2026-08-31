@@ -1,9 +1,21 @@
 ---
-title: "Access Package Assignment Request without bypassing approval"
+title: "Create an Access Package Assignment Request Without Bypassing Approval"
+excerpt: "Add a user to an Entra ID Access Package with PowerShell without skipping the approval flow, using AdminAdd plus the IsApprovalRequired parameter."
 date: 2025-05-13
+last_modified_at: 2025-05-14
 classes: wide
 categories:
   - Access Packages
+tags:
+  - PowerShell
+  - Entra ID
+  - Entitlement Management
+  - Microsoft Graph
+  - Approval Workflow
+header:
+  teaser: /assets/images/teasers/access-package-assignment-request.png
+redirect_from:
+  - /access packages/Access-Package-Assignment-Request/
 ---
 **Important:** Update: Looks like this method is currently not working. It will still auto-approve. I will log a ticket on github.
 {: .notice--info}

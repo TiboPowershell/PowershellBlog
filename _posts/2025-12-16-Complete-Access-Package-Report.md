@@ -1,9 +1,22 @@
 ---
 title: "The Ultimate Entra ID Access Package Report & Authorization Matrix"
+excerpt: "A PowerShell script that exports every Entra ID Access Package setting - policies, approvers, reviewers, PIM groups and Logic Apps - into one Excel report."
 date: 2025-12-16
+last_modified_at: 2025-12-17
 classes: wide
 categories:
   - Access Packages
+tags:
+  - PowerShell
+  - Entra ID
+  - Entitlement Management
+  - Microsoft Graph
+  - Reporting
+  - PIM
+header:
+  teaser: /assets/images/teasers/complete-access-package-report.png
+redirect_from:
+  - /access packages/Complete-Access-Package-Report/
 ---
 
 If you’ve spent any time working with Access Packages in Entra ID Entitlement Management, you’ve probably come to the same conclusion I have: the built-in reporting options leave a lot to be desired.
@@ -22,13 +35,13 @@ When you run this script, it will create an Excel file that looks like this. It 
 
 Example: Role_dependencies
 
-[![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)
+[![Role_dependencies worksheet of the Access Package report, listing each package and the roles it depends on]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_1.png)
 
 Example: AP_Definitions
 
-[![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)
+[![AP_Definitions worksheet of the Access Package report, showing catalog, description and policy settings per package]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_12.png)
 
-[![alt]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_13.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_13.png)
+[![AP_Definitions worksheet continued, showing approvers, reviewers and Logic App settings per Access Package]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_13.png)]({{ site.url }}{{ site.baseurl }}/assets/images/fullaccesspackagereport/Screenshot_13.png)
 
 ## Prerequisites
 To run this script, we will need to download several PowerShell modules and we also need to create an App Registration which will be used to connect to Graph.
